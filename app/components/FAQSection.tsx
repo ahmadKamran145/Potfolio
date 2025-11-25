@@ -1,7 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "./SectionHeading";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
   {
@@ -28,9 +32,50 @@ const faqs = [
 
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const faqRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        sectionRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        faqRefs.current,
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="faq" className="bg-[#101828]">
+    <section ref={sectionRef} id="faq" className="bg-[#101828]">
       <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
         <SectionHeading
           kicker="Support"
@@ -42,17 +87,30 @@ export function FAQSection() {
           {faqs.map((faq, index) => {
             const isOpen = index === openIndex;
             return (
-              <article key={faq.question} className="rounded-2xl border border-white/10 bg-white/5">
+              <article
+                key={faq.question}
+                ref={(el: HTMLDivElement | null) => void (faqRefs.current[index] = el)}
+                className={`rounded-2xl border border-white/10 bg-white/5 overflow-hidden transition-all duration-500 ${
+                  isOpen ? "shadow-lg shadow-brand-emerald/20" : "hover:shadow-md hover:shadow-brand-emerald/10"
+                }`}
+              >
                 <button
-                  className="flex w-full items-center justify-between px-6 py-4 text-left text-base font-semibold text-white"
+                  className="flex w-full items-center justify-between px-6 py-4 text-left text-base font-semibold text-white transition-colors duration-300 hover:text-brand-emerald"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
                   {faq.question}
-                  <span className="text-brand-emerald">{isOpen ? "−" : "+"}</span>
+                  <span className="text-brand-emerald text-2xl">{isOpen ? "−" : "+"}</span>
                 </button>
-                {isOpen ? (
-                  <p className="px-6 pb-6 text-sm text-slate-300">{faq.answer}</p>
-                ) : null}
+                <div
+                  style={{
+                    maxHeight: isOpen ? 500 : 0,
+                    opacity: isOpen ? 1 : 0,
+                    transition: "all 0.5s ease",
+                  }}
+                  className="px-6 pb-6 text-sm text-slate-300"
+                >
+                  {faq.answer}
+                </div>
               </article>
             );
           })}
@@ -61,4 +119,3 @@ export function FAQSection() {
     </section>
   );
 }
-

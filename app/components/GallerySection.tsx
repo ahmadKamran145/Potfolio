@@ -1,4 +1,10 @@
+"use client";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "./SectionHeading";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const locations = [
   { name: "CoWork I-10", area: "I-10 Markaz, Islamabad", capacity: "150+ members" },
@@ -8,8 +14,29 @@ const locations = [
 ];
 
 export function GallerySection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      sectionRef.current,
+      { y: -150, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+        },
+      }
+    );
+  }, []);
+
   return (
-    <section id="gallery" className="bg-[#101828] ">
+    <section ref={sectionRef} id="gallery" className="bg-[#101828]">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
         <SectionHeading
           kicker="Network"
@@ -37,4 +64,3 @@ export function GallerySection() {
     </section>
   );
 }
-

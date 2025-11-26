@@ -7,13 +7,16 @@ import { Testimonials } from "./components/Testimonials";
 import { FAQSection } from "./components/FAQSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
+import { Gallery } from "./components/Gallery";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#02060d] text-white">
       <Navbar />
       <main>
+        
         <Hero />
+        <Gallery/>
         <Services />
         <Spaces />
         <GallerySection />

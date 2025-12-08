@@ -116,7 +116,7 @@ export function Hero() {
               Premium coworking designed for modern teams in Islamabad
             </h1>
             <p className="text-lg text-slate-300">
-              From private offices to managed suites, CoWork24 provides the
+              From private offices to managed suites, Inceptum provides the
               tech-enabled spaces that founders, creatives, and enterprise teams
               need to focus and grow.
             </p>
@@ -146,7 +146,10 @@ export function Hero() {
           </ul>
         </div>
 
-        <div ref={rightRef} className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
+        <div
+          ref={rightRef}
+          className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur"
+        >
           <div className="rounded-2xl border border-white/10 bg-black/20 p-6">
             <div className="flex items-center justify-between text-sm text-slate-300">
               <p>Average occupancy</p>
@@ -163,10 +166,14 @@ export function Hero() {
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
-                ref={(el: HTMLDivElement | null) => void (statsRef.current[i] = el)}
+                ref={(el: HTMLDivElement | null) =>
+                  void (statsRef.current[i] = el)
+                }
                 className="rounded-2xl border border-white/10 bg-black/30 p-4 text-center"
               >
-                <p className="text-2xl font-semibold text-white">{stat.value}</p>
+                <p className="text-2xl font-semibold text-white">
+                  {stat.value}
+                </p>
                 <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
                   {stat.label}
                 </p>

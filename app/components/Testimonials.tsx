@@ -6,7 +6,7 @@ const testimonials = [
     name: "Ahmed Khan",
     title: "Founder, NovaLabs",
     quote:
-      "We moved our entire engineering squad into CoWork24. The acoustics, bandwidth, and on-site support have rivaled dedicated HQ spaces.",
+      "We moved our entire engineering squad into Inceptum. The acoustics, bandwidth, and on-site support have rivaled dedicated HQ spaces.",
   },
   {
     name: "Sarah Ali",
@@ -29,7 +29,7 @@ export function Testimonials() {
         <SectionHeading
           kicker="Community"
           title="Teams that thrive here"
-          description="Startups, agencies, and enterprise pods choose CoWork24 for reliability and experience-led design."
+          description="Startups, agencies, and enterprise pods choose Inceptum for reliability and experience-led design."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {testimonials.map((testimonial) => (
@@ -42,9 +42,13 @@ export function Testimonials() {
                   <Star key={index} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-              <p className="mt-4 flex-1 text-sm text-slate-200">“{testimonial.quote}”</p>
+              <p className="mt-4 flex-1 text-sm text-slate-200">
+                “{testimonial.quote}”
+              </p>
               <div className="mt-6">
-                <p className="text-base font-semibold text-white">{testimonial.name}</p>
+                <p className="text-base font-semibold text-white">
+                  {testimonial.name}
+                </p>
                 <p className="text-sm text-slate-400">{testimonial.title}</p>
               </div>
             </article>
@@ -54,4 +58,3 @@ export function Testimonials() {
     </section>
   );
 }
-

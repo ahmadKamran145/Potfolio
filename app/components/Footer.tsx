@@ -42,11 +42,15 @@ export function Footer() {
             ref={brandRef}
             className="text-base font-semibold text-white transition-all hover:text-[#E03182] cursor-pointer"
           >
-            CoWork<span className="text-[color:var(--primary-pink)]">24</span>
+            IN<span className="text-[color:var(--primary-pink)]">CEPTUM</span>
           </p>
-          <p ref={textRef}>Flexible workspaces for ambitious teams in Islamabad.</p>
+          <p ref={textRef}>
+            Flexible workspaces for ambitious teams in Islamabad.
+          </p>
         </div>
-        <p ref={copyrightRef}>© {new Date().getFullYear()} CoWork24. All rights reserved.</p>
+        <p ref={copyrightRef}>
+          © {new Date().getFullYear()} Inceptum. All rights reserved.
+        </p>
       </div>
     </footer>
   );

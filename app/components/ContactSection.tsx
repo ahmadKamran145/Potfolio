@@ -74,7 +74,11 @@ export function ContactSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="contact" className="bg-[#101828] overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="contact"
+      className="bg-[#101828] overflow-hidden"
+    >
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           {/* Form */}
@@ -121,12 +125,16 @@ export function ContactSection() {
                 </label>
                 <label className="text-sm text-slate-200">
                   Preferred location
-                  <select
-                    className="mt-2 w-full rounded-2xl border cursor-pointer border-white/15 px-4 py-3 text-white focus:border-brand-rose focus:outline-none focus:shadow-[0_0_15px_rgba(224,49,130,0.5)] transition"
-                  >
-                    <option className="bg-[#050b14] text-white">I-10 Markaz</option>
-                    <option className="bg-[#050b14] text-white">Gulberg Greens</option>
-                    <option className="bg-[#050b14] text-white">Blue Area</option>
+                  <select className="mt-2 w-full rounded-2xl border cursor-pointer border-white/15 px-4 py-3 text-white focus:border-brand-rose focus:outline-none focus:shadow-[0_0_15px_rgba(224,49,130,0.5)] transition">
+                    <option className="bg-[#050b14] text-white">
+                      I-10 Markaz
+                    </option>
+                    <option className="bg-[#050b14] text-white">
+                      Gulberg Greens
+                    </option>
+                    <option className="bg-[#050b14] text-white">
+                      Blue Area
+                    </option>
                   </select>
                 </label>
               </div>
@@ -152,12 +160,18 @@ export function ContactSection() {
           <div className="space-y-6">
             {[
               { icon: Phone, label: "Phone", value: "+92 300 1234567" },
-              { icon: Mail, label: "Email", value: "hello@cowork24.pk" },
-              { icon: MapPin, label: "Head office", value: "I-10 Markaz, Islamabad" },
+              { icon: Mail, label: "Email", value: "hello@Inceptum.pk" },
+              {
+                icon: MapPin,
+                label: "Head office",
+                value: "I-10 Markaz, Islamabad",
+              },
             ].map((item, i) => (
               <div
                 key={item.label}
-                ref={(el: HTMLDivElement | null) => void (cardsRef.current[i] = el)}
+                ref={(el: HTMLDivElement | null) =>
+                  void (cardsRef.current[i] = el)
+                }
                 className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl shadow-[0_20px_50px_rgba(16,185,129,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(16,185,129,0.4)]"
               >
                 <item.icon className="h-5 w-5 text-brand-emerald" />

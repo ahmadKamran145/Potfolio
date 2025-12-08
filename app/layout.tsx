@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CoWork24 — Premium Coworking in Islamabad",
+  title: "Inceptum — Premium Coworking in Islamabad",
   description:
     "A thoughtfully designed coworking experience for startups, creatives, and enterprise pods across Islamabad.",
 };
